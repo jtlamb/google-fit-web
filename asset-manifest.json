@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/google-fit-web/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/google-fit-web/static/js/main.a31a76ce.chunk.js",
+    "main.js.map": "/google-fit-web/static/js/main.a31a76ce.chunk.js.map",
+    "runtime-main.js": "/google-fit-web/static/js/runtime-main.d27e8812.js",
+    "runtime-main.js.map": "/google-fit-web/static/js/runtime-main.d27e8812.js.map",
+    "static/js/2.db39837d.chunk.js": "/google-fit-web/static/js/2.db39837d.chunk.js",
+    "static/js/2.db39837d.chunk.js.map": "/google-fit-web/static/js/2.db39837d.chunk.js.map",
+    "static/js/3.4a34e60f.chunk.js": "/google-fit-web/static/js/3.4a34e60f.chunk.js",
+    "static/js/3.4a34e60f.chunk.js.map": "/google-fit-web/static/js/3.4a34e60f.chunk.js.map",
+    "index.html": "/google-fit-web/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/google-fit-web/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.db39837d.chunk.js.LICENSE.txt": "/google-fit-web/static/js/2.db39837d.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/google-fit-web/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d27e8812.js",
+    "static/js/2.db39837d.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.a31a76ce.chunk.js"
+  ]
+}
