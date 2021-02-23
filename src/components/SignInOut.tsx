@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { authContext } from './App';
 
 import keys from '../secrets/oauth2.keys.json';
 
@@ -14,17 +15,20 @@ export default function SignInOut() {
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
     const [ accessToken, setAccessToken ] = useState('');
 
+    const { setAuthenticated } = useContext(authContext);
 
     const login = (response : any) => {
         if (response.accessToken){
             setIsLoggedIn(true);
             setAccessToken(response.accessToken);
+            setAuthenticated(true);
         }
     }
 
     const logout = () => {
         setIsLoggedIn(false);
         setAccessToken('');
+        setAuthenticated(false);
     }
 
     const handleLoginFailure = () => {
@@ -54,7 +58,6 @@ export default function SignInOut() {
                     responseType='code,token'
                 />
             }
-            { accessToken ? <h5>Your Access Token: <br/><br/> {accessToken}</h5> : null }
         </div>
     );
 }
