@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/google-fit-web/static/css/main.8fce2ab7.chunk.css",
-    "main.js": "/google-fit-web/static/js/main.0fe879ac.chunk.js",
-    "main.js.map": "/google-fit-web/static/js/main.0fe879ac.chunk.js.map",
-    "runtime-main.js": "/google-fit-web/static/js/runtime-main.057051bc.js",
-    "runtime-main.js.map": "/google-fit-web/static/js/runtime-main.057051bc.js.map",
-    "static/js/2.9f2f775b.chunk.js": "/google-fit-web/static/js/2.9f2f775b.chunk.js",
-    "static/js/2.9f2f775b.chunk.js.map": "/google-fit-web/static/js/2.9f2f775b.chunk.js.map",
-    "static/js/3.054303b4.chunk.js": "/google-fit-web/static/js/3.054303b4.chunk.js",
-    "static/js/3.054303b4.chunk.js.map": "/google-fit-web/static/js/3.054303b4.chunk.js.map",
+    "main.css": "/google-fit-web/static/css/main.e116d4e8.chunk.css",
+    "main.js": "/google-fit-web/static/js/main.49ad9661.chunk.js",
+    "main.js.map": "/google-fit-web/static/js/main.49ad9661.chunk.js.map",
+    "runtime-main.js": "/google-fit-web/static/js/runtime-main.152d3503.js",
+    "runtime-main.js.map": "/google-fit-web/static/js/runtime-main.152d3503.js.map",
+    "static/js/2.76b23d7b.chunk.js": "/google-fit-web/static/js/2.76b23d7b.chunk.js",
+    "static/js/2.76b23d7b.chunk.js.map": "/google-fit-web/static/js/2.76b23d7b.chunk.js.map",
+    "static/js/3.7584f991.chunk.js": "/google-fit-web/static/js/3.7584f991.chunk.js",
+    "static/js/3.7584f991.chunk.js.map": "/google-fit-web/static/js/3.7584f991.chunk.js.map",
     "index.html": "/google-fit-web/index.html",
-    "static/css/main.8fce2ab7.chunk.css.map": "/google-fit-web/static/css/main.8fce2ab7.chunk.css.map",
-    "static/js/2.9f2f775b.chunk.js.LICENSE.txt": "/google-fit-web/static/js/2.9f2f775b.chunk.js.LICENSE.txt"
+    "static/css/main.e116d4e8.chunk.css.map": "/google-fit-web/static/css/main.e116d4e8.chunk.css.map",
+    "static/js/2.76b23d7b.chunk.js.LICENSE.txt": "/google-fit-web/static/js/2.76b23d7b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.057051bc.js",
-    "static/js/2.9f2f775b.chunk.js",
-    "static/css/main.8fce2ab7.chunk.css",
-    "static/js/main.0fe879ac.chunk.js"
+    "static/js/runtime-main.152d3503.js",
+    "static/js/2.76b23d7b.chunk.js",
+    "static/css/main.e116d4e8.chunk.css",
+    "static/js/main.49ad9661.chunk.js"
   ]
 }
