@@ -17,7 +17,7 @@ export default function SignInOut() {
 
     const { setAuthenticated } = useContext(authContext);
 
-    const login = (response : any) => {
+    const login = (response) => {
         if (response.accessToken){
             setIsLoggedIn(true);
             setAccessToken(response.accessToken);

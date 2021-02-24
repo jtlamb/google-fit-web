@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";import '../styles/App.scss';
+} from "react-router-dom";
+import '../styles/App.scss';
 import LandingPage from './LandingPage';
 import Home from './Home';
 import Profile from './Profile';
@@ -14,31 +15,35 @@ import SideNav from './SideNav';
 // Context to track whether the user is logged in or not
 export const authContext = createContext({
   authenticated: false,
-  setAuthenticated: (auth : boolean) => {}
+  setAuthenticated: (auth) => {}
 });
 
-export default function App() : JSX.Element {
+export default function App() {
   const [ authenticated, setAuthenticated ] = useState(false);
 
   return (
     <div className="App">
       <Router basename='/google-fit-web'>
         <authContext.Provider value={{authenticated, setAuthenticated}}>
-          <SideNav/>
+          <div className="sideNav">
+            <SideNav/>
+          </div>
         </authContext.Provider>
         <Switch>
+          <div className="content">
           <Route exact path='/'>
-          {authenticated ? <Home /> : <LandingPage />}
+            {authenticated ? <Home /> : <LandingPage />}
           </Route>
           <Route exact path='/profile'>
-            <Profile />
+            {authenticated ? <Profile /> : <LandingPage />}
           </Route>
           <Route exact path='/journal'>
-            <Journal />
+            {authenticated ? <Journal /> : <LandingPage />}
           </Route>
           <Route exact path='/about'>
-            <About />
+            {authenticated ? <About /> : <LandingPage />}
           </Route>
+          </div>
         </Switch>
       </Router>
     </div>

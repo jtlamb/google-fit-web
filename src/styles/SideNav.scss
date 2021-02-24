@@ -1,0 +1,30 @@
+@use "@material/drawer";
+@use "@material/list";
+
+@include drawer.core-styles;
+@include drawer.dismissible-core-styles;
+@include drawer.modal-core-styles;
+@include list.core-styles;
+@include list.core-styles;
+
+.SideNav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+.nav {
+    
+    .nav:visited, .nav:link {
+        color: darkgray;
+        text-decoration: none !important;
+    }
+    .nav:hover, .nav:active {
+        color: black;
+        text-decoration: none !important;
+    }
+}
+.login {
+    margin-bottom: 1em;
+}
