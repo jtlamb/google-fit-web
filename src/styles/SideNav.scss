@@ -1,5 +1,6 @@
 @use "@material/drawer";
 @use "@material/list";
+@import "/src/styles/App.scss";
 
 @include drawer.core-styles;
 @include drawer.dismissible-core-styles;
@@ -13,7 +14,42 @@
     justify-content: flex-start;
     height: 100vh;
 }
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.title {
+    font-size: 1.5em;
+    .nav:visited, .nav:link {
+        color: darkgray;
+        text-decoration: none !important;
+    }
+    .nav:hover, .nav:active {
+        color: black;
+    }
 
+    text-decoration: none !important;
+}
+.logo {
+    height: 9em;
+    width: 14em;
+}
+
+.mdc-drawer {
+    @include drawer.item-activated-icon-ink-color(white);
+    @include drawer.item-activated-text-ink-color(white);
+    .mdc-list-item--activated {
+        background-color: $blue;
+    }
+    .mdc-list-item__graphic:focus, .mdc-list-item__text:focus {
+        outline: none;
+        color: white;
+    }
+
+}
 .nav {
     
     .nav:visited, .nav:link {
@@ -27,4 +63,5 @@
 }
 .login {
     margin-bottom: 1em;
+    padding-top: 1em;
 }

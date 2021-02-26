@@ -26,7 +26,7 @@ export default function App() {
       <Router basename='/google-fit-web'>
         <authContext.Provider value={{authenticated, setAuthenticated}}>
           <div className="sideNav">
-            <SideNav/>
+            <SideNav authenticated={authenticated}/>
           </div>
         </authContext.Provider>
         <Switch>
@@ -41,7 +41,7 @@ export default function App() {
             {authenticated ? <Journal /> : <LandingPage />}
           </Route>
           <Route exact path='/about'>
-            {authenticated ? <About /> : <LandingPage />}
+            <About />
           </Route>
           </div>
         </Switch>
