@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
-import { authContext } from './App';
+import { authContext, tokenContext } from './App';
 
 import keys from '../secrets/oauth2.keys.json';
+import reportWebVitals from '../reportWebVitals';
 
 // Credit : https://github.com/ZoeLiao/React-Google-SignIn-SignOut-Demo/blob/master/src/GoogleBtn.js
 
@@ -13,22 +14,22 @@ const CLIENT_ID = keys.web.client_id;
  */
 export default function SignInOut() {
     const [ isLoggedIn, setIsLoggedIn ] = useState(false);
-    const [ accessToken, setAccessToken ] = useState('');
 
     const { setAuthenticated } = useContext(authContext);
+    const { setToken } = useContext(tokenContext);
 
     const login = (response) => {
         if (response.accessToken){
             setIsLoggedIn(true);
-            setAccessToken(response.accessToken);
             setAuthenticated(true);
+            setToken(response.accessToken);
         }
     }
 
     const logout = () => {
         setIsLoggedIn(false);
-        setAccessToken('');
         setAuthenticated(false);
+        setToken('');
     }
 
     const handleLoginFailure = () => {
