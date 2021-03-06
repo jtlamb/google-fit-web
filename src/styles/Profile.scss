@@ -1,0 +1,6 @@
+@use "@material/data-table/data-table";
+
+@import "/src/styles/App.scss";
+
+@include data-table.core-styles;
+@include data-table.theme-baseline;

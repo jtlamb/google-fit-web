@@ -1,54 +1,50 @@
+/* Packages */
 import React, { createContext, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+/* Styles */
 import '../styles/App.scss';
+/* Child Components */
 import LandingPage from './LandingPage';
 import Home from './Home';
 import Profile from './Profile';
 import Journal from './Journal';
 import About from './About';
 import SideNav from './SideNav';
+/* Util */
+import { blankUser } from '../util/UserProfile';
 
-// Context to track whether the user is logged in or not
-export const authContext = createContext({
-  authenticated: false,
-  setAuthenticated: (auth) => {}
+// Context to track basic user info
+export const userContext = createContext({
+  user: blankUser,
+  setUser: (user) => {}
 });
 
-// Context to keep access token for API calls
-export const tokenContext = createContext({
-  token: '',
-  setToken: (token) => {}
-});
-
-
+/** App */
 export default function App() {
-  const [ authenticated, setAuthenticated ] = useState(false);
-  const [ token, setToken] = useState('');
+  const [ user, setUser] = useState(blankUser);
 
   return (
     <div className="App">
       <Router basename='/google-fit-web'>
-        <authContext.Provider value={{authenticated, setAuthenticated}}>
-          <tokenContext.Provider value={{token, setToken}}>
-            <div className="sideNav">
-              <SideNav authenticated={authenticated}/>
-            </div>
-          </tokenContext.Provider>
-        </authContext.Provider>
+        <userContext.Provider value={{user, setUser}}>
+          <div className="sideNav">
+            <SideNav authenticated={user.authenticated}/>
+          </div>
+        </userContext.Provider>
         <Switch>
           <div className="content">
             <Route exact path='/'>
-              {authenticated ? <Home /> : <LandingPage />}
+              {user.authenticated ? <Home /> : <LandingPage />}
             </Route>
             <Route exact path='/profile'>
-              {authenticated ? <Profile token={token}/> : <LandingPage />}
+              {user.authenticated ? <Profile user={user}/> : <LandingPage />}
             </Route>
             <Route exact path='/journal'>
-              {authenticated ? <Journal /> : <LandingPage />}
+              {user.authenticated ? <Journal /> : <LandingPage />}
             </Route>
             <Route exact path='/about'>
               <About />

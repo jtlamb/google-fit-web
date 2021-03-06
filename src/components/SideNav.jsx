@@ -1,9 +1,17 @@
+/* Packages */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+/* Child Components */
 import SignInOut from './SignInOut';
+/* Styles */
 import '../styles/SideNav.scss';
+/* Utils */
 import FitLogo from '../imgs/GoogleFit_Logo_Vertical.png'
 
+/** Sidebar Navigation
+ *  conatins all of the navigation for the site
+ * @param props.authenticated chooses what to render based on whether or not the user is authenticated
+ */
 export default function SideNav(props) {
 
     // selected will track the current index of the selected item
