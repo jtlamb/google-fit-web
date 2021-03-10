@@ -10,10 +10,7 @@ import { createUser, blankUser } from '../util/UserProfile';
 // Credit : https://github.com/ZoeLiao/React-Google-SignIn-SignOut-Demo/blob/master/src/GoogleBtn.js
 
 const CLIENT_ID = keys.web.client_id;
-const SCOPES = [
-    "https://www.googleapis.com/auth/fitness.activity.read",
-    "https://www.googleapis.com/auth/fitness.body.read"
-];
+const SCOPES = "https://www.googleapis.com/auth/fitness.activity.read https://www.googleapis.com/auth/fitness.body.read https://www.googleapis.com/auth/fitness.body.write https://www.googleapis.com/auth/user.birthday.read https://www.googleapis.com/auth/user.gender.read https://www.googleapis.com/auth/userinfo.profile";
 
 /** Google Sign In and Sign Out Button */
 export default function SignInOut() {
@@ -38,6 +35,7 @@ export default function SignInOut() {
                     response.accessToken
                 )
             )
+            console.log(response.getGrantedScopes())
         }
     }
 
@@ -72,7 +70,7 @@ export default function SignInOut() {
                     onFailure={handleLoginFailure}
                     cookiePolicy={'single_host_origin'}
                     responseType='code,token'
-                    scopes={SCOPES}
+                    scope={SCOPES}
                 />
             }
         </div>
