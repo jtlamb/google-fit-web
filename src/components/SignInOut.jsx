@@ -30,7 +30,7 @@ export default function SignInOut() {
                     response.getBasicProfile().getName(),
                     response.getBasicProfile().getGivenName(),
                     response.getBasicProfile().getFamilyName(),
-                    response.getBasicProfile().getImageUrl(),
+                    response.getBasicProfile().getImageUrl().slice(0, response.getBasicProfile().getImageUrl().lastIndexOf("=", response.getBasicProfile().getImageUrl().length-1)) + "=s1000-c",
                     response.getBasicProfile().getEmail(),
                     response.accessToken
                 )

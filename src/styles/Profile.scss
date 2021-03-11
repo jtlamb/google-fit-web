@@ -4,3 +4,44 @@
 
 @include data-table.core-styles;
 @include data-table.theme-baseline;
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pfp {
+    margin-top: 10vh;
+    height: 15em;
+    width: 15em;
+    border-radius: 200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.name {
+    font-size: 2.5em;
+    padding-top: 1.25em;
+    padding-bottom: 1.25em;
+    font-family: 'Roboto', sans-serif;;
+}
+
+.basic-info {
+    width: 40em;
+
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.3em;
+    font-family: 'Roboto', sans-serif;;
+}
+
+.loading {
+    padding-top: 5vh;
+    font-size: 2em;
+}
+
+.loading-icon {
+    font-size: 5em;
+}

@@ -3,6 +3,7 @@ $blue: #4285F4;
 $yellow: #FBBC05;
 $green: #34A853;
 $lightgrey: #d3d3d3;
+$black: #000000;
 
 
 .App {
@@ -11,6 +12,7 @@ $lightgrey: #d3d3d3;
   flex-direction: row;
   align-items: flex-start;
   min-height: 100%;
+  font-family: 'Roboto', sans-serif;;
 }
 
 .sideNav {
