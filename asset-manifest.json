@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/google-fit-web/static/css/main.77677a4a.chunk.css",
-    "main.js": "/google-fit-web/static/js/main.0148157d.chunk.js",
-    "main.js.map": "/google-fit-web/static/js/main.0148157d.chunk.js.map",
+    "main.css": "/google-fit-web/static/css/main.0e19cd4d.chunk.css",
+    "main.js": "/google-fit-web/static/js/main.e29e34f5.chunk.js",
+    "main.js.map": "/google-fit-web/static/js/main.e29e34f5.chunk.js.map",
     "runtime-main.js": "/google-fit-web/static/js/runtime-main.05bf8e9d.js",
     "runtime-main.js.map": "/google-fit-web/static/js/runtime-main.05bf8e9d.js.map",
-    "static/js/2.fe448596.chunk.js": "/google-fit-web/static/js/2.fe448596.chunk.js",
-    "static/js/2.fe448596.chunk.js.map": "/google-fit-web/static/js/2.fe448596.chunk.js.map",
+    "static/js/2.db0fd575.chunk.js": "/google-fit-web/static/js/2.db0fd575.chunk.js",
+    "static/js/2.db0fd575.chunk.js.map": "/google-fit-web/static/js/2.db0fd575.chunk.js.map",
     "static/js/3.f9c6ee12.chunk.js": "/google-fit-web/static/js/3.f9c6ee12.chunk.js",
     "static/js/3.f9c6ee12.chunk.js.map": "/google-fit-web/static/js/3.f9c6ee12.chunk.js.map",
     "index.html": "/google-fit-web/index.html",
-    "static/css/main.77677a4a.chunk.css.map": "/google-fit-web/static/css/main.77677a4a.chunk.css.map",
-    "static/js/2.fe448596.chunk.js.LICENSE.txt": "/google-fit-web/static/js/2.fe448596.chunk.js.LICENSE.txt",
+    "static/css/main.0e19cd4d.chunk.css.map": "/google-fit-web/static/css/main.0e19cd4d.chunk.css.map",
+    "static/js/2.db0fd575.chunk.js.LICENSE.txt": "/google-fit-web/static/js/2.db0fd575.chunk.js.LICENSE.txt",
     "static/media/GoogleFit_Logo_Vertical.0368927f.png": "/google-fit-web/static/media/GoogleFit_Logo_Vertical.0368927f.png"
   },
   "entrypoints": [
     "static/js/runtime-main.05bf8e9d.js",
-    "static/js/2.fe448596.chunk.js",
-    "static/css/main.77677a4a.chunk.css",
-    "static/js/main.0148157d.chunk.js"
+    "static/js/2.db0fd575.chunk.js",
+    "static/css/main.0e19cd4d.chunk.css",
+    "static/js/main.e29e34f5.chunk.js"
   ]
 }
