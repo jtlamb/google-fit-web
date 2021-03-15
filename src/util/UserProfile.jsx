@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const blankUser = {
     authenticated: false,
     name: "",

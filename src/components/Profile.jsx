@@ -20,10 +20,27 @@ function mToFt(m) {
         inches
     }
 }
+function getMonth(m) {
+    switch(m) {
+        case 1: return "January";
+        case 2: return "February";
+        case 3: return "March";
+        case 4: return "April";
+        case 5: return "May";
+        case 6: return "June";
+        case 7: return "July";
+        case 8: return "August";
+        case 9: return "September";
+        case 10: return "October";
+        case 11: return "November";
+        case 12: return "December";
+        default: return "Invalid Month"
+    }
+}
 
 export default function Profile(props) {
 
-    const [ loaded, setLoaded ] = useState(false);
+    const [ loaded, setLoaded ] = useState(true);
     const [ bDate, setBDate ] = useState('');
     const [ gender, setGender ] = useState('');
     const [ height, setHeight ] = useState(0);
@@ -50,7 +67,7 @@ export default function Profile(props) {
         )
         .then(res => res.json())
         .then(response => {
-            setBDate(`${response.birthdays[0].date.month}/${response.birthdays[0].date.day}/${response.birthdays[0].date.year}`);
+            setBDate(`${getMonth(response.birthdays[0].date.month)} ${response.birthdays[0].date.day}, ${response.birthdays[0].date.year}`);
             setGender(`${response.genders[0].formattedValue}`);
         })
         .catch(error => console.log(error));
@@ -60,11 +77,13 @@ export default function Profile(props) {
     const d = new Date();
     const presentationOfGoogleFit = 86400000 * 16246;
     const end = d.getTime();
+    console.log(end);
 
     const requestURL = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
     const weightBody = {
         "aggregateBy": [{
             "dataTypeName": "com.google.weight",
+            "dataSourceId": "derived:com.google.weight:com.google.android.gms:merge_weight"
         }],
         "startTimeMillis": end - 86400000,
         "endTimeMillis": end,
@@ -80,6 +99,7 @@ export default function Profile(props) {
     const heightBody = {
         "aggregateBy": [{
             "dataTypeName": "com.google.height",
+            "dataSourceId": "derived:com.google.height:com.google.android.gms:merge_height"
         }],
         "startTimeMillis": end - 86400000,
         "endTimeMillis": end,
@@ -107,10 +127,11 @@ export default function Profile(props) {
         )
         .then(res => res.json())
         .then(response => {
+            console.log(response);
             setWeight(response.bucket[0].dataset[0].point[0].value[0].fpVal);
         })
         .catch(error => console.log(error));
-    }, [])  
+    }, [props.user.authenticated])  
     // get height
     useEffect(() => {
         fetch(
@@ -126,15 +147,16 @@ export default function Profile(props) {
         )
         .then(res => res.json())
         .then(response => {
+            console.log(response);
             setHeight(response.bucket[0].dataset[0].point[0].value[0].fpVal);
             setLoaded(true);
         })
         .catch(error => console.log(error));
-    }, [])  
+    }, [props.user.authenticated])  
 
     return (
         <div className="profile">
-            <img src={props.user.pfPic} alt="Profile Picture" className="pfp"/>
+            <img src={props.user.pfPic} alt="Profile" className="pfp"/>
             <div className="name">{props.user.fname} {props.user.lname}</div>
             {loaded 
             ?  
@@ -169,7 +191,7 @@ export default function Profile(props) {
                 </div>
             :
                 <div>
-                    <span className="loading">Loading Uer Info ...</span> 
+                    <span className="loading">Loading User Info ...</span> 
                     <br/>
                     <span className="material-icons loading-icon">loop</span>
                 </div>
