@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material/chips": "^10.0.0",
     "@material/data-table": "^10.0.0",
     "@material/drawer": "^10.0.0",
     "@material/list": "^10.0.0",

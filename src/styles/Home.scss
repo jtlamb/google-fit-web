@@ -1,19 +1,48 @@
+@use "@material/chips/mdc-chips";
+
+@import "/src/styles/App.scss";
+
+
 .home {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 .name {
     font-size: 2.5em;
-    padding-top: 1.25em;
-    padding-bottom: 1.25em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
     font-family: 'Roboto', sans-serif;;
 }
 
-.moveMinuteGraphs {
+.middleGraphs {
+    padding-top: 5em;
+}
+
+.chip-selected {
+    background-color: rgba($color: $blue, $alpha: .3) !important;
+}
+
+
+.weeklyGoalGraphs {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+.bottomGraphs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 7.5em;
+}
+
+.bottomGraph {
+    padding-left: 5em;
+    padding-right: 5em;
 }
