@@ -1,0 +1,19 @@
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.name {
+    font-size: 2.5em;
+    padding-top: 1.25em;
+    padding-bottom: 1.25em;
+    font-family: 'Roboto', sans-serif;;
+}
+
+.moveMinuteGraphs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
