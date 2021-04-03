@@ -38,8 +38,7 @@ export default function App() {
         <Switch>
           <div className="content">
             <Route exact path='/'>
-              {/*user.authenticated ? <Home user={user}/> : <LandingPage />*/}
-              <Home />
+              {user.authenticated ? <Home user={user}/> : <LandingPage />}
             </Route>
             <Route exact path='/profile'>
               {user.authenticated ? <Profile user={user}/> : <LandingPage />}

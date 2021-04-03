@@ -74,85 +74,85 @@ export default function Profile(props) {
     }, []);
 
     /* Height, Weight */
-    const d = new Date();
-    const presentationOfGoogleFit = 86400000 * 16246;
-    const end = d.getTime();
-    console.log(end);
+    // const d = new Date();
+    // const presentationOfGoogleFit = 86400000 * 16246;
+    // const end = d.getTime();
+    // console.log(end);
 
-    const requestURL = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
-    const weightBody = {
-        "aggregateBy": [{
-            "dataTypeName": "com.google.weight",
-            "dataSourceId": "derived:com.google.weight:com.google.android.gms:merge_weight"
-        }],
-        "startTimeMillis": end - 86400000,
-        "endTimeMillis": end,
-        "bucketByTime": {
-            "durationMillis": 86400000,
-            "period": {
-                "type": "day",
-                "value": 1,
-                "timeZoneId": "America/New_York"
-            }
-        }
-    };
-    const heightBody = {
-        "aggregateBy": [{
-            "dataTypeName": "com.google.height",
-            "dataSourceId": "derived:com.google.height:com.google.android.gms:merge_height"
-        }],
-        "startTimeMillis": end - 86400000,
-        "endTimeMillis": end,
-        "bucketByTime": {
-            "durationMillis": 86400000,
-            "period": {
-                "type": "day",
-                "value": 1,
-                "timeZoneId": "America/New_York"
-            }
-        }
-    };
-    // get weight
-    useEffect(() => {
-        fetch(
-            requestURL,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;encoding=utf-8',
-                    'Authorization': `Bearer ${props.user.accessToken}`,
-                },
-                body: JSON.stringify(weightBody)
-            }
-        )
-        .then(res => res.json())
-        .then(response => {
-            console.log(response);
-            setWeight(response.bucket[0].dataset[0].point[0].value[0].fpVal);
-        })
-        .catch(error => console.log(error));
-    }, [props.user.authenticated])  
-    // get height
-    useEffect(() => {
-        fetch(
-            requestURL,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;encoding=utf-8',
-                    'Authorization': `Bearer ${props.user.accessToken}`,
-                },
-                body: JSON.stringify(heightBody)
-            }
-        )
-        .then(res => res.json())
-        .then(response => {
-            console.log(response);
-            setHeight(response.bucket[0].dataset[0].point[0].value[0].fpVal);
-            setLoaded(true);
-        })
-        .catch(error => console.log(error));
-    }, [props.user.authenticated])  
+    // const requestURL = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
+    // const weightBody = {
+    //     "aggregateBy": [{
+    //         "dataTypeName": "com.google.weight",
+    //         "dataSourceId": "derived:com.google.weight:com.google.android.gms:merge_weight"
+    //     }],
+    //     "startTimeMillis": end - 86400000,
+    //     "endTimeMillis": end,
+    //     "bucketByTime": {
+    //         "durationMillis": 86400000,
+    //         "period": {
+    //             "type": "day",
+    //             "value": 1,
+    //             "timeZoneId": "America/New_York"
+    //         }
+    //     }
+    // };
+    // const heightBody = {
+    //     "aggregateBy": [{
+    //         "dataTypeName": "com.google.height",
+    //         "dataSourceId": "derived:com.google.height:com.google.android.gms:merge_height"
+    //     }],
+    //     "startTimeMillis": end - 86400000,
+    //     "endTimeMillis": end,
+    //     "bucketByTime": {
+    //         "durationMillis": 86400000,
+    //         "period": {
+    //             "type": "day",
+    //             "value": 1,
+    //             "timeZoneId": "America/New_York"
+    //         }
+    //     }
+    // };
+    // // get weight
+    // useEffect(() => {
+    //     fetch(
+    //         requestURL,
+    //         {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json;encoding=utf-8',
+    //                 'Authorization': `Bearer ${props.user.accessToken}`,
+    //             },
+    //             body: JSON.stringify(weightBody)
+    //         }
+    //     )
+    //     .then(res => res.json())
+    //     .then(response => {
+    //         console.log(response);
+    //         setWeight(response.bucket[0].dataset[0].point[0].value[0].fpVal);
+    //     })
+    //     .catch(error => console.log(error));
+    // }, [props.user.authenticated])  
+    // // get height
+    // useEffect(() => {
+    //     fetch(
+    //         requestURL,
+    //         {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json;encoding=utf-8',
+    //                 'Authorization': `Bearer ${props.user.accessToken}`,
+    //             },
+    //             body: JSON.stringify(heightBody)
+    //         }
+    //     )
+    //     .then(res => res.json())
+    //     .then(response => {
+    //         console.log(response);
+    //         setHeight(response.bucket[0].dataset[0].point[0].value[0].fpVal);
+    //         setLoaded(true);
+    //     })
+    //     .catch(error => console.log(error));
+    // }, [props.user.authenticated])  
 
     return (
         <div className="profile">
@@ -177,14 +177,14 @@ export default function Profile(props) {
                                     <th class="mdc-data-table__cell" scope="row">Gender</th>
                                     <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{gender}</td>
                                 </tr>
-                                <tr class="mdc-data-table__row">
+                                {/* <tr class="mdc-data-table__row">
                                     <th class="mdc-data-table__cell" scope="row">Weight</th>
                                     <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{Math.round(kToLbs(weight))} lbs</td>
                                 </tr>
                                 <tr class="mdc-data-table__row">
                                     <th class="mdc-data-table__cell" scope="row">Height</th>
                                     <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{mToFt(height).ft} ft {mToFt(height).inches} in</td>
-                                </tr>
+                                </tr> */}
                             </tbody>
                         </table>
                     </div>

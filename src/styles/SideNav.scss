@@ -26,10 +26,10 @@
 }
 
 .mdc-drawer {
-    @include drawer.item-activated-icon-ink-color(white);
-    @include drawer.item-activated-text-ink-color(white);
+    @include drawer.item-activated-icon-ink-color($blue);
+    @include drawer.item-activated-text-ink-color($blue);
     .mdc-list-item--activated, .mdc-list-item--activated:hover {
-        background-color: $blue !important;
+        background-color: rgba($color: $blue, $alpha: .3) !important;
     }
     .mdc-list-item:hover {
         background-color: $lightgrey;
