@@ -1,50 +1,15 @@
 /* Packages */
 import React, { useEffect, useState } from 'react';
+/* Util */
+import { getMonth } from '../util/Conversions';
 /* Styles */
 import '../styles/Profile.scss'
-/* Util */
-import  apikey  from '../secrets/apikey.json'
-import reportWebVitals from '../reportWebVitals';
-
-
-function kToLbs(kg) {
-    return kg * 2.20462;
-}
-function mToFt(m) {
-    let ft = m * 3.28084;
-    let inches = (ft % ft.toFixed(0)) * 12;
-    ft = ft.toFixed(0);
-    inches = Math.round(inches).toFixed(0)
-    return {
-        ft,
-        inches
-    }
-}
-function getMonth(m) {
-    switch(m) {
-        case 1: return "January";
-        case 2: return "February";
-        case 3: return "March";
-        case 4: return "April";
-        case 5: return "May";
-        case 6: return "June";
-        case 7: return "July";
-        case 8: return "August";
-        case 9: return "September";
-        case 10: return "October";
-        case 11: return "November";
-        case 12: return "December";
-        default: return "Invalid Month"
-    }
-}
 
 export default function Profile(props) {
 
-    const [ loaded, setLoaded ] = useState(true);
+    const [ loaded, setLoaded ] = useState(false);
     const [ bDate, setBDate ] = useState('');
     const [ gender, setGender ] = useState('');
-    const [ height, setHeight ] = useState(0);
-    const [ weight, setWeight ] = useState(0);
 
     /* Name, Birthday, Gender */
     const peopleRequestUrl = new URL('https://people.googleapis.com');
@@ -69,11 +34,15 @@ export default function Profile(props) {
         .then(response => {
             setBDate(`${getMonth(response.birthdays[0].date.month)} ${response.birthdays[0].date.day}, ${response.birthdays[0].date.year}`);
             setGender(`${response.genders[0].formattedValue}`);
+            setLoaded(true);
         })
         .catch(error => console.log(error));
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    /* Height, Weight */
+    /* Height, Weight  TODO :: ????? can only get aggregate data from user manually entered values, find a way to get latest value */
+    // const [ height, setHeight ] = useState(0);
+    // const [ weight, setWeight ] = useState(0);
+
     // const d = new Date();
     // const presentationOfGoogleFit = 86400000 * 16246;
     // const end = d.getTime();
@@ -193,7 +162,7 @@ export default function Profile(props) {
                 <div>
                     <span className="loading">Loading User Info ...</span> 
                     <br/>
-                    <span className="material-icons loading-icon">loop</span>
+                    <span className="material-icons loading-icon">cached</span>
                 </div>
             }
         </div>

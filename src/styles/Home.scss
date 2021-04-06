@@ -1,8 +1,11 @@
 @use "@material/icon-button";
 @use "@material/chips/mdc-chips";
+@use "@material/circular-progress/mdc-circular-progress";
 @import "/src/styles/App.scss";
 
 @include icon-button.core-styles;
+
+.material-icons.md-spec { font-size: 120px; }
 
 .home {
     display: flex;
@@ -14,7 +17,13 @@
 .name {
     font-size: 2.5em;
     padding-top: 1.5em;
-    padding-bottom: 1.5em;
+    padding-bottom: 1.25em;
+    font-family: 'Roboto', sans-serif;;
+}
+
+.dailyGoalsText {
+    font-size: 1.5em;
+    text-decoration: underline;
     font-family: 'Roboto', sans-serif;;
 }
 
