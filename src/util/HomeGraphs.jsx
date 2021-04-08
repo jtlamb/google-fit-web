@@ -35,10 +35,10 @@ export const renderBarGraph = (props) => {
 }
 
 
-const pieWidth = '15em';
-const pieHeight = '15em';
+const pieWidth = '13em';
+const pieHeight = '13em';
 
-export const renderPieChart = (actual, goal, color, date) => {
+export const renderPieChart = (actual, goal, color, title) => {
     return (
         <div className="pie">
             <Chart
@@ -65,7 +65,7 @@ export const renderPieChart = (actual, goal, color, date) => {
                     ],
                 }}
             />
-            {date}   
+            {title}   
         </div>
     )
 }

@@ -126,7 +126,7 @@ export default function Profile(props) {
     return (
         <div className="profile">
             <img src={props.user.pfPic} alt="Profile" className="pfp"/>
-            <div className="name">{props.user.fname} {props.user.lname}</div>
+            <span className="name">{props.user.fname} {props.user.lname}</span>
             {loaded 
             ?  
                 <div class="mdc-data-table basic-info">
@@ -134,7 +134,7 @@ export default function Profile(props) {
                         <table class="mdc-data-table__table">
                             <thead>
                                 <tr class="mdc-data-table__header-row">
-                                    <th class="mdc-data-table__header-cell"><span className="title">Basic Information</span></th>
+                                    <th class="mdc-data-table__header-cell"><span className="tableTitle">Basic Information</span></th>
                                 </tr>
                             </thead>
                             <tbody class="mdc-data-table__content">

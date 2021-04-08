@@ -1,0 +1,129 @@
+@use "@material/icon-button";
+@use "@material/data-table/data-table";
+
+@import "/src/styles/App.scss";
+
+@include icon-button.core-styles;
+@include data-table.core-styles;
+@include data-table.theme-baseline;
+
+
+.material-icons.md-spec { font-size: 120px; }
+
+.pageTitle {
+    font-size: 2.5em;
+    padding-top: 1.5em;
+    padding-bottom: 1.25em;
+    font-family: 'Roboto', sans-serif;;
+}
+
+.topNav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 7.5em;
+}
+
+.monthYear {
+    align-self: flex-start;
+    font-size: 1.5em;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: underline;
+}
+
+.topDates {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-around;
+    min-width: 100%;
+}
+
+.days {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap-reverse;
+    justify-content: space-evenly;
+    align-content: space-around;
+    min-width: 100%;
+}
+
+.dateSelected {
+    @include icon-button.ink-color($blue);
+    border-radius: 50%;
+    background-color: rgba($color: $blue, $alpha: .3);
+}
+
+.bottomSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.currDate {
+    align-self: flex-start;
+    font-size: 1em;
+    padding-bottom: .5em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.log {
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    min-width: 30em;
+}
+
+.journalGraphs {
+    display: flex;
+    flex-direction: column;
+}
+
+.stepsData {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 2em;
+    justify-content: space-between;
+}
+
+.stepsIcon {
+    font-size: 5em;
+}
+
+.heartPointsData {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 2em;
+    justify-content: space-between;
+}
+
+.heartPointsIcon {
+    font-size: 5em;
+}
+
+.goalData {
+    display: flex;
+    flex-direction: column;
+}
+
+.logDataGraphTitle {
+    font-size: 1em;
+    padding-bottom: .5em;
+    text-decoration: underline;
+    font-family: 'Roboto', sans-serif;
+}
+
+.goalDataGraphs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

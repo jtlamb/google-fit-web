@@ -1,6 +1,5 @@
 @use "@material/icon-button";
 @use "@material/chips/mdc-chips";
-@use "@material/circular-progress/mdc-circular-progress";
 @import "/src/styles/App.scss";
 
 @include icon-button.core-styles;
@@ -62,6 +61,6 @@
 }
 
 .bottomGraph {
-    padding-left: 5em;
-    padding-right: 5em;
+    padding-left: 3em;
+    padding-right: 3em;
 }
