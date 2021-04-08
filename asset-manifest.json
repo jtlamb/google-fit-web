@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/google-fit-web/static/css/main.a626a8ce.chunk.css",
-    "main.js": "/google-fit-web/static/js/main.22c55cc9.chunk.js",
-    "main.js.map": "/google-fit-web/static/js/main.22c55cc9.chunk.js.map",
-    "runtime-main.js": "/google-fit-web/static/js/runtime-main.86b3050f.js",
-    "runtime-main.js.map": "/google-fit-web/static/js/runtime-main.86b3050f.js.map",
-    "static/js/2.9eaf60ae.chunk.js": "/google-fit-web/static/js/2.9eaf60ae.chunk.js",
-    "static/js/2.9eaf60ae.chunk.js.map": "/google-fit-web/static/js/2.9eaf60ae.chunk.js.map",
-    "static/js/3.468cdd10.chunk.js": "/google-fit-web/static/js/3.468cdd10.chunk.js",
-    "static/js/3.468cdd10.chunk.js.map": "/google-fit-web/static/js/3.468cdd10.chunk.js.map",
+    "main.css": "/google-fit-web/static/css/main.10cf19b7.chunk.css",
+    "main.js": "/google-fit-web/static/js/main.0382e7fe.chunk.js",
+    "main.js.map": "/google-fit-web/static/js/main.0382e7fe.chunk.js.map",
+    "runtime-main.js": "/google-fit-web/static/js/runtime-main.dc73af12.js",
+    "runtime-main.js.map": "/google-fit-web/static/js/runtime-main.dc73af12.js.map",
+    "static/js/2.0dce0f59.chunk.js": "/google-fit-web/static/js/2.0dce0f59.chunk.js",
+    "static/js/2.0dce0f59.chunk.js.map": "/google-fit-web/static/js/2.0dce0f59.chunk.js.map",
+    "static/js/3.591e1372.chunk.js": "/google-fit-web/static/js/3.591e1372.chunk.js",
+    "static/js/3.591e1372.chunk.js.map": "/google-fit-web/static/js/3.591e1372.chunk.js.map",
     "index.html": "/google-fit-web/index.html",
-    "static/css/main.a626a8ce.chunk.css.map": "/google-fit-web/static/css/main.a626a8ce.chunk.css.map",
-    "static/js/2.9eaf60ae.chunk.js.LICENSE.txt": "/google-fit-web/static/js/2.9eaf60ae.chunk.js.LICENSE.txt",
+    "static/css/main.10cf19b7.chunk.css.map": "/google-fit-web/static/css/main.10cf19b7.chunk.css.map",
+    "static/js/2.0dce0f59.chunk.js.LICENSE.txt": "/google-fit-web/static/js/2.0dce0f59.chunk.js.LICENSE.txt",
     "static/media/GoogleFit_Logo_Vertical.0368927f.png": "/google-fit-web/static/media/GoogleFit_Logo_Vertical.0368927f.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.86b3050f.js",
-    "static/js/2.9eaf60ae.chunk.js",
-    "static/css/main.a626a8ce.chunk.css",
-    "static/js/main.22c55cc9.chunk.js"
+    "static/js/runtime-main.dc73af12.js",
+    "static/js/2.0dce0f59.chunk.js",
+    "static/css/main.10cf19b7.chunk.css",
+    "static/js/main.0382e7fe.chunk.js"
   ]
 }
