@@ -139,7 +139,7 @@ export default function Home(props) {
             "dataTypeName": "com.google.step_count.delta",
             "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
         }],
-        "startTimeMillis": d.getTime() - msSinceMidnight - week + day,
+        "startTimeMillis": d.getTime() - week + day,
         "endTimeMillis": d.getTime(),
         "bucketByTime": {
             "durationMillis": day,
