@@ -19,8 +19,8 @@ export default function Home(props) {
     const requestURL = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
     let d = new Date(), e = new Date(d);
     const msSinceMidnight = e - d.setHours(0,0,0,0);
-    const week = 6.048e+8;
     const day = 86400000;
+    const week = 7*day;
     
 
     // ------------HEART POINTS API CALL------------
@@ -30,8 +30,8 @@ export default function Home(props) {
         "aggregateBy": [{
             "dataTypeName": "com.google.heart_minutes",
         }],
-        "startTimeMillis": e.getTime() - week + day,
-        "endTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime() - week + day,
+        "endTimeMillis": d.getTime(),
         "bucketByTime": {
             "durationMillis": day,
             "period": {
@@ -45,7 +45,7 @@ export default function Home(props) {
         "aggregateBy": [{
             "dataTypeName": "com.google.heart_minutes",
         }],
-        "startTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime(),
         "endTimeMillis": e.getTime(),
         "bucketByTime": {
             "durationMillis": msSinceMidnight,
@@ -139,8 +139,8 @@ export default function Home(props) {
             "dataTypeName": "com.google.step_count.delta",
             "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
         }],
-        "startTimeMillis": e.getTime() - msSinceMidnight - week + day,
-        "endTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime() - msSinceMidnight - week + day,
+        "endTimeMillis": d.getTime(),
         "bucketByTime": {
             "durationMillis": day,
             "period": {
@@ -156,7 +156,7 @@ export default function Home(props) {
             "dataTypeName": "com.google.step_count.delta",
             "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
         }],
-        "startTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime(),
         "endTimeMillis": e.getTime(),
         "bucketByTime": {
             "durationMillis": msSinceMidnight,
@@ -248,8 +248,8 @@ export default function Home(props) {
         "aggregateBy": [{
             "dataTypeName": "com.google.distance.delta",
         }],
-        "startTimeMillis": e.getTime() - msSinceMidnight - week + day,
-        "endTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime() - week + day,
+        "endTimeMillis": d.getTime(),
         "bucketByTime": {
             "durationMillis": day,
             "period": {
@@ -264,7 +264,7 @@ export default function Home(props) {
         "aggregateBy": [{
             "dataTypeName": "com.google.distance.delta",
         }],
-        "startTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime(),
         "endTimeMillis": e.getTime(),
         "bucketByTime": {
             "durationMillis": msSinceMidnight,
@@ -356,8 +356,8 @@ export default function Home(props) {
         "aggregateBy": [{
             "dataTypeName": "com.google.active_minutes",
         }],
-        "startTimeMillis": e.getTime() - msSinceMidnight - week + day,
-        "endTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime() - week + day,
+        "endTimeMillis": d.getTime(),
         "bucketByTime": {
             "durationMillis": day,
             "period": {
@@ -372,7 +372,7 @@ export default function Home(props) {
         "aggregateBy": [{
             "dataTypeName": "com.google.active_minutes",
         }],
-        "startTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime(),
         "endTimeMillis": e.getTime(),
         "bucketByTime": {
             "durationMillis": msSinceMidnight,
@@ -464,8 +464,8 @@ export default function Home(props) {
         "aggregateBy": [{
             "dataTypeName": "com.google.calories.expended",
         }],
-        "startTimeMillis": e.getTime() - msSinceMidnight - week + day,
-        "endTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime() - week + day,
+        "endTimeMillis": d.getTime(),
         "bucketByTime": {
             "durationMillis": day,
             "period": {
@@ -480,7 +480,7 @@ export default function Home(props) {
         "aggregateBy": [{
             "dataTypeName": "com.google.calories.expended",
         }],
-        "startTimeMillis": e.getTime() - msSinceMidnight,
+        "startTimeMillis": d.getTime(),
         "endTimeMillis": e.getTime(),
         "bucketByTime": {
             "durationMillis": msSinceMidnight,

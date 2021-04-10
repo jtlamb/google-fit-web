@@ -44,7 +44,7 @@ export default function App() {
               {user.authenticated ? <Profile user={user}/> : <LandingPage />}
             </Route>
             <Route exact path='/journal'>
-              {user.authenticated ? <Journal /> : <LandingPage />}
+              {user.authenticated ? <Journal user={user}/> : <LandingPage />}
             </Route>
             <Route exact path='/about'>
               <About />
