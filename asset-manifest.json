@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/google-fit-web/static/css/main.ff661ada.chunk.css",
-    "main.js": "/google-fit-web/static/js/main.bc64a23f.chunk.js",
-    "main.js.map": "/google-fit-web/static/js/main.bc64a23f.chunk.js.map",
+    "main.js": "/google-fit-web/static/js/main.e172c865.chunk.js",
+    "main.js.map": "/google-fit-web/static/js/main.e172c865.chunk.js.map",
     "runtime-main.js": "/google-fit-web/static/js/runtime-main.dc73af12.js",
     "runtime-main.js.map": "/google-fit-web/static/js/runtime-main.dc73af12.js.map",
     "static/js/2.5ca57a53.chunk.js": "/google-fit-web/static/js/2.5ca57a53.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.dc73af12.js",
     "static/js/2.5ca57a53.chunk.js",
     "static/css/main.ff661ada.chunk.css",
-    "static/js/main.bc64a23f.chunk.js"
+    "static/js/main.e172c865.chunk.js"
   ]
 }
