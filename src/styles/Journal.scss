@@ -76,7 +76,14 @@
         padding-bottom: .5em;
         font-family: 'Roboto', sans-serif;
     }
+    .header-text {
+        font-weight: bold;
+        font-family: 'Roboto', sans-serif;
+    }
     
+    .mdc-data-table {
+        max-height: 35em;
+    }
 }
 
 .journalGraphs {

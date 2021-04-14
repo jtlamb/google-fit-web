@@ -17,8 +17,8 @@ export default function Home(props) {
     }
 
     const requestURL = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
-    let d = new Date(), e = new Date(d);
-    const msSinceMidnight = e - d.setHours(0,0,0,0);
+    let d = new Date();
+    d.setHours(0,0,0,0);
     const day = 86400000;
     const week = 7*day;
     
