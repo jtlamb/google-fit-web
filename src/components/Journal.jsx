@@ -473,69 +473,70 @@ export default function Journal(props) {
                     <button class="mdc-icon-button material-icons" onClick={() => handleNav(1)}>keyboard_arrow_right</button>
                 </div>
             </div>
-            {loaded ? 
-
-                <div className="bottomSection">
-                    <div className="log">
-                        <span className="currDate">{getMonth(selectedDate.getMonth()+1) + " " + selectedDate.getDate() + "," + selectedDate.getFullYear()}</span>
-                        <div class="mdc-data-table mdc-data-table--sticky-header">
-                            <div class="mdc-data-table__table-container">
-                                <table class="mdc-data-table__table">
-                                    <thead>                                    
-                                        <tr class="mdc-data-table__header-row">
-                                            <th class="mdc-data-table__header-cell header-text" role="columnheader" scope="col">Time</th>
-                                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Heart Points</th>
-                                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Steps</th>
-                                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Distance (mi)</th>
-                                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Calories (kCal)</th>
-                                            <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Move Minutes</th>
+            <div className="bottomSection">
+                <div className="log">
+                    <span className="currDate">{getMonth(selectedDate.getMonth()+1) + " " + selectedDate.getDate() + "," + selectedDate.getFullYear()}</span>
+                    <div class="mdc-data-table mdc-data-table--sticky-header">
+                        <div class="mdc-data-table__table-container">
+                            <table class="mdc-data-table__table">
+                                <thead>                                    
+                                    <tr class="mdc-data-table__header-row">
+                                        <th class="mdc-data-table__header-cell header-text" role="columnheader" scope="col">Time</th>
+                                        <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Heart Points</th>
+                                        <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Steps</th>
+                                        <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Distance (mi)</th>
+                                        <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Calories (kCal)</th>
+                                        <th class="mdc-data-table__header-cell mdc-data-table__header-cell--numeric header-text" role="columnheader" scope="col">Move Minutes</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="mdc-data-table__content">
+                                    {loaded ? rows.map(x => 
+                                        <tr class="mdc-data-table__row">
+                                            <th class="mdc-data-table__cell" scope="row">{x.time}</th>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.hp}</td>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.step}</td>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.dist}</td>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.cals}</td>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.mm}</td>
                                         </tr>
-                                    </thead>
-                                    <tbody class="mdc-data-table__content">
-                                        {rows.map(x => 
-                                            <tr class="mdc-data-table__row">
-                                                <th class="mdc-data-table__cell" scope="row">{x.time}</th>
-                                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.hp}</td>
-                                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.step}</td>
-                                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.dist}</td>
-                                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.cals}</td>
-                                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{x.mm}</td>
-                                            </tr>
-                                        )}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="journalGraphs">
-                        <div className="stepsData">
-                            <span class="material-icons stepsIcon">directions_walk</span>
-                            <div className="stepsText">
-                                {steps.actual} Steps
-                            </div>
-                        </div>
-                        <div className="heartPointsData">
-                            <span class="material-icons heartPointsIcon">favorite_border</span>
-                            <div className="heartPointsText">
-                                {heartPoints.actual} Heart Points
-                            </div>
-                        </div>
-                        <div className="goalData">
-                            <div className="logDataGraphTitle">% Daily Goal</div>
-                            <div className="goalDataGraphs">
-                                {renderPieChart(steps.actual, steps.goal, steps.color, steps.title)}
-                                {renderPieChart(heartPoints.actual, heartPoints.goal, heartPoints.color, heartPoints.title)}
-                            </div>
+                                    )
+                                    : rows.map(x => 
+                                        <tr class="mdc-data-table__row">
+                                            <th class="mdc-data-table__cell" scope="row">{x.time}</th>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">—</td>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">—</td>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">—</td>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">—</td>
+                                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">—</td>
+                                        </tr>
+                                    )}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-            :
-            <div>
-                <span className="loading">Loading Fitness Data ...</span> 
-                <br/>
-                <span class="material-icons md-spec">cached</span>
+                <div className="journalGraphs">
+                    <div className="stepsData">
+                        <span class="material-icons stepsIcon">directions_walk</span>
+                        <div className="stepsText">
+                            {loaded ? steps.actual : '—'} Steps
+                        </div>
+                    </div>
+                    <div className="heartPointsData">
+                        <span class="material-icons heartPointsIcon">favorite_border</span>
+                        <div className="heartPointsText">
+                            {loaded ? heartPoints.actual : '—'} Heart Points
+                        </div>
+                    </div>
+                    <div className="goalData">
+                        <div className="logDataGraphTitle">% Daily Goal</div>
+                        <div className="goalDataGraphs">
+                            {loaded ? renderPieChart(steps.actual, steps.goal, steps.color, steps.title) : renderPieChart(0,1,'','Loading..')}
+                            {loaded ? renderPieChart(heartPoints.actual, heartPoints.goal, heartPoints.color, heartPoints.title) : renderPieChart(0,1,'','Loading..')}
+                        </div>
+                    </div>
+                </div>
             </div>
-            }
         </div>
     )
 }
