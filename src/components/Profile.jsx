@@ -127,44 +127,35 @@ export default function Profile(props) {
         <div className="profile">
             <img src={props.user.pfPic} alt="Profile" className="pfp"/>
             <span className="name">{props.user.fname} {props.user.lname}</span>
-            {loaded 
-            ?  
-                <div class="mdc-data-table basic-info">
-                    <div class="mdc-data-table__table-container">
-                        <table class="mdc-data-table__table">
-                            <thead>
-                                <tr class="mdc-data-table__header-row">
-                                    <th class="mdc-data-table__header-cell"><span className="tableTitle">Basic Information</span></th>
-                                </tr>
-                            </thead>
-                            <tbody class="mdc-data-table__content">
-                                <tr class="mdc-data-table__row">
-                                    <th class="mdc-data-table__cell" scope="row">Birthday</th>
-                                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{bDate}</td>
-                                </tr>
-                                <tr class="mdc-data-table__row">
-                                    <th class="mdc-data-table__cell" scope="row">Gender</th>
-                                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{gender}</td>
-                                </tr>
-                                {/* <tr class="mdc-data-table__row">
-                                    <th class="mdc-data-table__cell" scope="row">Weight</th>
-                                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{Math.round(kToLbs(weight))} lbs</td>
-                                </tr>
-                                <tr class="mdc-data-table__row">
-                                    <th class="mdc-data-table__cell" scope="row">Height</th>
-                                    <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{mToFt(height).ft} ft {mToFt(height).inches} in</td>
-                                </tr> */}
-                            </tbody>
-                        </table>
-                    </div>
+            <div class="mdc-data-table basic-info">
+                <div class="mdc-data-table__table-container">
+                    <table class="mdc-data-table__table">
+                        <thead>
+                            <tr class="mdc-data-table__header-row">
+                                <th class="mdc-data-table__header-cell"><span className="tableTitle">Basic Information</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="mdc-data-table__content">
+                            <tr class="mdc-data-table__row">
+                                <th class="mdc-data-table__cell" scope="row">Birthday</th>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{loaded ? bDate : '—'}</td>
+                            </tr>
+                            <tr class="mdc-data-table__row">
+                                <th class="mdc-data-table__cell" scope="row">Gender</th>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{loaded ? gender : '—'}</td>
+                            </tr>
+                            {/* <tr class="mdc-data-table__row">
+                                <th class="mdc-data-table__cell" scope="row">Weight</th>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{Math.round(kToLbs(weight))} lbs</td>
+                            </tr>
+                            <tr class="mdc-data-table__row">
+                                <th class="mdc-data-table__cell" scope="row">Height</th>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{mToFt(height).ft} ft {mToFt(height).inches} in</td>
+                            </tr> */}
+                        </tbody>
+                    </table>
                 </div>
-            :
-                <div>
-                    <span className="loading">Loading User Info ...</span> 
-                    <br/>
-                    <span className="material-icons loading-icon">cached</span>
-                </div>
-            }
+            </div>
         </div>
     );
 }
