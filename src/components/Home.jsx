@@ -31,24 +31,9 @@ export default function Home(props) {
             "dataTypeName": "com.google.heart_minutes",
         }],
         "startTimeMillis": d.getTime() - week + day,
-        "endTimeMillis": d.getTime(),
+        "endTimeMillis": d.getTime() + day,
         "bucketByTime": {
             "durationMillis": day,
-            "period": {
-                "type": "day",
-                "value": 1,
-                "timeZoneId": "America/New_York"
-            }
-        }
-    };
-    const hpTodayBody = {
-        "aggregateBy": [{
-            "dataTypeName": "com.google.heart_minutes",
-        }],
-        "startTimeMillis": d.getTime(),
-        "endTimeMillis": e.getTime(),
-        "bucketByTime": {
-            "durationMillis": msSinceMidnight,
             "period": {
                 "type": "day",
                 "value": 1,
@@ -70,17 +55,17 @@ export default function Home(props) {
         )
         .then(res => res.json())
         .then(response => {
-            let temp1 = [];
-            for (let i = 0; i < 6; i++) {
-                let date = new Date(parseInt(response.bucket[i].startTimeMillis));
-                if (response.bucket[i].dataset[0].point.length !== 0) {
+            let temp = [];
+            response.bucket.forEach(x => {
+                let date = new Date(parseInt(x.startTimeMillis));
+                if (x.dataset[0].point.length !== 0) {
                     let obj = {
-                        actual: response.bucket[i].dataset[0].point[0].value[0].fpVal, 
+                        actual: x.dataset[0].point[0].value[0].fpVal, 
                         goal: 36, 
                         color: '#06bf9a', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 } else {
                     let obj = {
                         actual: 0, 
@@ -88,43 +73,10 @@ export default function Home(props) {
                         color: '#06bf9a', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 }
-            }
-            fetch(
-                requestURL,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json;encoding=utf-8',
-                        'Authorization': `Bearer ${props.user.accessToken}`,
-                    },
-                    body: JSON.stringify(hpTodayBody)
-                }
-            )
-            .then(res => res.json())
-            .then(response => {
-                let temp2 = [];
-                let date = new Date(parseInt(response.bucket[0].endTimeMillis));
-                if (response.bucket[0].dataset[0].point.length !== 0) {
-                    let obj = {
-                        actual: response.bucket[0].dataset[0].point[0].value[0].fpVal, 
-                        goal: 36, 
-                        color: '#06bf9a', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                } else {
-                    let obj = {
-                        actual: 0, 
-                        goal: 36, 
-                        color: '#06bf9a', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                }
-                setHeartPoints(temp1.concat(temp2));
-            })
+            });
+            setHeartPoints(temp);
         })
         .catch(error => console.log(error));
 
@@ -140,26 +92,9 @@ export default function Home(props) {
             "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
         }],
         "startTimeMillis": d.getTime() - week + day,
-        "endTimeMillis": d.getTime(),
+        "endTimeMillis": d.getTime() + day,
         "bucketByTime": {
             "durationMillis": day,
-            "period": {
-                "type": "day",
-                "value": 1,
-                "timeZoneId": "America/New_York"
-            }
-        }
-    };
-
-    const stepsTodayBody = {
-        "aggregateBy": [{
-            "dataTypeName": "com.google.step_count.delta",
-            "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
-        }],
-        "startTimeMillis": d.getTime(),
-        "endTimeMillis": e.getTime(),
-        "bucketByTime": {
-            "durationMillis": msSinceMidnight,
             "period": {
                 "type": "day",
                 "value": 1,
@@ -182,17 +117,17 @@ export default function Home(props) {
         )
         .then(res => res.json())
         .then(response => {
-            let temp1 = [];
-            for (let i = 0; i < 6; i++) {
-                let date = new Date(parseInt(response.bucket[i].startTimeMillis));
-                if (response.bucket[i].dataset[0].point.length !== 0) {
+            let temp = [];
+            response.bucket.forEach(x => {
+                let date = new Date(parseInt(x.startTimeMillis));
+                if (x.dataset[0].point.length !== 0) {
                     let obj = {
-                        actual: response.bucket[i].dataset[0].point[0].value[0].intVal, 
+                        actual: x.dataset[0].point[0].value[0].intVal, 
                         goal: 15000, 
                         color: '#4285F4', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 } else {
                     let obj = {
                         actual: 0, 
@@ -200,43 +135,10 @@ export default function Home(props) {
                         color: '#4285F4', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 }
-            }
-            fetch(
-                requestURL,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json;encoding=utf-8',
-                        'Authorization': `Bearer ${props.user.accessToken}`,
-                    },
-                    body: JSON.stringify(stepsTodayBody)
-                }
-            )
-            .then(res => res.json())
-            .then(response => {
-                let temp2 = [];
-                let date = new Date(parseInt(response.bucket[0].endTimeMillis));
-                if (response.bucket[0].dataset[0].point.length !== 0) {
-                    let obj = {
-                        actual: response.bucket[0].dataset[0].point[0].value[0].intVal, 
-                        goal: 15000, 
-                        color: '#4285F4', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                } else {
-                    let obj = {
-                        actual: 0, 
-                        goal: 15000, 
-                        color: '#4285F4', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                }
-                setSteps(temp1.concat(temp2));
-            })
+            });
+            setSteps(temp);
         })
         .catch(error => console.log(error));
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -249,25 +151,9 @@ export default function Home(props) {
             "dataTypeName": "com.google.distance.delta",
         }],
         "startTimeMillis": d.getTime() - week + day,
-        "endTimeMillis": d.getTime(),
+        "endTimeMillis": d.getTime() + day,
         "bucketByTime": {
             "durationMillis": day,
-            "period": {
-                "type": "day",
-                "value": 1,
-                "timeZoneId": "America/New_York"
-            }
-        }
-    };
-
-    const distTodayBody = {
-        "aggregateBy": [{
-            "dataTypeName": "com.google.distance.delta",
-        }],
-        "startTimeMillis": d.getTime(),
-        "endTimeMillis": e.getTime(),
-        "bucketByTime": {
-            "durationMillis": msSinceMidnight,
             "period": {
                 "type": "day",
                 "value": 1,
@@ -290,17 +176,17 @@ export default function Home(props) {
         )
         .then(res => res.json())
         .then(response => {
-            let temp1 = [];
-            for (let i = 0; i < 6; i++) {
-                let date = new Date(parseInt(response.bucket[i].startTimeMillis));
-                if (response.bucket[i].dataset[0].point.length !== 0) {
+            let temp = [];
+            response.bucket.forEach(x => {
+                let date = new Date(parseInt(x.startTimeMillis));
+                if (x.dataset[0].point.length !== 0) {
                     let obj = {
-                        actual: mToMi(response.bucket[i].dataset[0].point[0].value[0].fpVal), 
+                        actual: mToMi(x.dataset[0].point[0].value[0].fpVal), 
                         goal: 15000, 
                         color: '#4285F4', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 } else {
                     let obj = {
                         actual: 0, 
@@ -308,43 +194,10 @@ export default function Home(props) {
                         color: '#4285F4', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 }
-            }
-            fetch(
-                requestURL,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json;encoding=utf-8',
-                        'Authorization': `Bearer ${props.user.accessToken}`,
-                    },
-                    body: JSON.stringify(distTodayBody)
-                }
-            )
-            .then(res => res.json())
-            .then(response => {
-                let temp2 = [];
-                let date = new Date(parseInt(response.bucket[0].endTimeMillis));
-                if (response.bucket[0].dataset[0].point.length !== 0) {
-                    let obj = {
-                        actual: mToMi(response.bucket[0].dataset[0].point[0].value[0].fpVal), 
-                        goal: 15000, 
-                        color: '#4285F4', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                } else {
-                    let obj = {
-                        actual: 0, 
-                        goal: 15000, 
-                        color: '#4285F4', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                }
-                setDist(temp1.concat(temp2));
-            })
+            });
+            setDist(temp);
         })
         .catch(error => console.log(error));
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -357,25 +210,9 @@ export default function Home(props) {
             "dataTypeName": "com.google.active_minutes",
         }],
         "startTimeMillis": d.getTime() - week + day,
-        "endTimeMillis": d.getTime(),
+        "endTimeMillis": d.getTime() + day,
         "bucketByTime": {
             "durationMillis": day,
-            "period": {
-                "type": "day",
-                "value": 1,
-                "timeZoneId": "America/New_York"
-            }
-        }
-    };
-
-    const mmTodayBody = {
-        "aggregateBy": [{
-            "dataTypeName": "com.google.active_minutes",
-        }],
-        "startTimeMillis": d.getTime(),
-        "endTimeMillis": e.getTime(),
-        "bucketByTime": {
-            "durationMillis": msSinceMidnight,
             "period": {
                 "type": "day",
                 "value": 1,
@@ -398,17 +235,17 @@ export default function Home(props) {
         )
         .then(res => res.json())
         .then(response => {
-            let temp1 = [];
-            for (let i = 0; i < 6; i++) {
-                let date = new Date(parseInt(response.bucket[i].startTimeMillis));
-                if (response.bucket[i].dataset[0].point.length !== 0) {
+            let temp = [];
+            response.bucket.forEach(x => {
+                let date = new Date(parseInt(x.startTimeMillis));
+                if (x.dataset[0].point.length !== 0) {
                     let obj = {
-                        actual: response.bucket[i].dataset[0].point[0].value[0].intVal, 
+                        actual: x.dataset[0].point[0].value[0].intVal, 
                         goal: 15000, 
                         color: '#4285F4', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 } else {
                     let obj = {
                         actual: 0, 
@@ -416,43 +253,10 @@ export default function Home(props) {
                         color: '#4285F4', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 }
-            }
-            fetch(
-                requestURL,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json;encoding=utf-8',
-                        'Authorization': `Bearer ${props.user.accessToken}`,
-                    },
-                    body: JSON.stringify(mmTodayBody)
-                }
-            )
-            .then(res => res.json())
-            .then(response => {
-                let temp2 = [];
-                let date = new Date(parseInt(response.bucket[0].endTimeMillis));
-                if (response.bucket[0].dataset[0].point.length !== 0) {
-                    let obj = {
-                        actual: response.bucket[0].dataset[0].point[0].value[0].intVal, 
-                        goal: 15000, 
-                        color: '#4285F4', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                } else {
-                    let obj = {
-                        actual: 0, 
-                        goal: 15000, 
-                        color: '#4285F4', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                }
-                setMoveMins(temp1.concat(temp2));
-            })
+            });
+            setMoveMins(temp);
         })
         .catch(error => console.log(error));
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -465,25 +269,9 @@ export default function Home(props) {
             "dataTypeName": "com.google.calories.expended",
         }],
         "startTimeMillis": d.getTime() - week + day,
-        "endTimeMillis": d.getTime(),
+        "endTimeMillis": d.getTime() + day,
         "bucketByTime": {
             "durationMillis": day,
-            "period": {
-                "type": "day",
-                "value": 1,
-                "timeZoneId": "America/New_York"
-            }
-        }
-    };
-
-    const calsTodayBody = {
-        "aggregateBy": [{
-            "dataTypeName": "com.google.calories.expended",
-        }],
-        "startTimeMillis": d.getTime(),
-        "endTimeMillis": e.getTime(),
-        "bucketByTime": {
-            "durationMillis": msSinceMidnight,
             "period": {
                 "type": "day",
                 "value": 1,
@@ -506,17 +294,17 @@ export default function Home(props) {
         )
         .then(res => res.json())
         .then(response => {
-            let temp1 = [];
-            for (let i = 0; i < 6; i++) {
-                let date = new Date(parseInt(response.bucket[i].startTimeMillis));
-                if (response.bucket[i].dataset[0].point.length !== 0) {
+            let temp = [];
+            response.bucket.forEach(x => {
+                let date = new Date(parseInt(x.startTimeMillis));
+                if (x.dataset[0].point.length !== 0) {
                     let obj = {
-                        actual: response.bucket[i].dataset[0].point[0].value[0].fpVal, 
+                        actual: x.dataset[0].point[0].value[0].fpVal, 
                         goal: 15000, 
                         color: '#4285F4', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 } else {
                     let obj = {
                         actual: 0, 
@@ -524,44 +312,11 @@ export default function Home(props) {
                         color: '#4285F4', 
                         date: date.toDateString()
                     }
-                    temp1.push(obj);
+                    temp.push(obj);
                 }
-            }
-            fetch(
-                requestURL,
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json;encoding=utf-8',
-                        'Authorization': `Bearer ${props.user.accessToken}`,
-                    },
-                    body: JSON.stringify(calsTodayBody)
-                }
-            )
-            .then(res => res.json())
-            .then(response => {
-                let temp2 = [];
-                let date = new Date(parseInt(response.bucket[0].endTimeMillis));
-                if (response.bucket[0].dataset[0].point.length !== 0) {
-                    let obj = {
-                        actual: response.bucket[0].dataset[0].point[0].value[0].fpVal, 
-                        goal: 15000, 
-                        color: '#4285F4', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                } else {
-                    let obj = {
-                        actual: 0, 
-                        goal: 15000, 
-                        color: '#4285F4', 
-                        date: date.toDateString()
-                    }
-                    temp2.push(obj);
-                }
-                setCals(temp1.concat(temp2));
-                setLoaded(true);
-            })
+            });
+            setCals(temp);
+            setLoaded(true);
         })
         .catch(error => console.log(error));
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -570,16 +325,18 @@ export default function Home(props) {
     const handlePagination = (i) => {
         if (i === 0) {
             // going left
-            (key - 1 === -1) ? setKey(3) : setKey(key - 1);
+            (key - 1 === -1) ? setKey(4) : setKey(key - 1);
         } else {
             // going right
-            (key + 1 === 4) ? setKey(0) : setKey(key + 1);
+            (key + 1 === 5) ? setKey(0) : setKey(key + 1);
         }
     }
 
     const bottomGraphs = (key) => {
         let stepsData = [];
         steps.map(x => stepsData.push(x.actual));
+        let hpData = [];
+        heartPoints.map(x => hpData.push(x.actual));
         let distData = [];
         dist.map(x => distData.push(x.actual));
         let mmData = []
@@ -610,10 +367,17 @@ export default function Home(props) {
                 return (
                     <>
                     <span className='bottomGraph'>{renderMoveMinsGraph(dates, mmData)}</span>
-                    <span className='bottomGraph'>{renderCaloriesGraph(dates, calsData)}</span>
+                    <span className='bottomGraph'>{renderHeartPointsGraph(dates, hpData)}</span>
                     </>
                 )
             case 3: 
+                return (
+                    <>
+                    <span className='bottomGraph'>{renderHeartPointsGraph(dates, hpData)}</span>
+                    <span className='bottomGraph'>{renderCaloriesGraph(dates, calsData)}</span>
+                    </>
+                )
+            case 4: 
                 return (
                     <>
                     <span className='bottomGraph'>{renderCaloriesGraph(dates, calsData)}</span>
@@ -717,6 +481,18 @@ const renderCaloriesGraph = (dates, data) => {
         label: 'Calories (kCal)',
         title: 'Calories',
         subtitle: 'Calories expended over the past week',
+        date: dates,
+        data: data
+    }
+    return renderBarGraph(props);
+}
+
+const renderHeartPointsGraph = (dates, data) => {
+    // get calories info from API
+    const props = {
+        label: 'Heart Points',
+        title: 'Heart Points',
+        subtitle: 'Heart Points over the past week',
         date: dates,
         data: data
     }

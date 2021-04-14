@@ -49,3 +49,14 @@ export function getMonth(m) {
         default: return "Invalid Month"
     }
 }
+
+/**
+ * not implemented as of the completion of this project because we were not able to obtain activity data recorded by the Google Fit mobile app
+ * @param a int or string value of activity
+ * @returns (key, value) pair representation of activity type as defined in the google api (https://developers.google.com/fit/rest/v1/reference/activity-types)
+ */
+export function getActivityType(a) {
+    switch(a) {
+
+    }
+}

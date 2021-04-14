@@ -132,6 +132,7 @@ export default function Journal(props) {
 
     // ------------STEPS API CALL------------
     const [ steps, setSteps ] = useState({actual: 0, goal: 0, color: '', title: ''});
+    const [ logSteps, setLogSteps ] = useState([0]);
 
     const stepsBody = {
         "aggregateBy": [{
@@ -149,6 +150,24 @@ export default function Journal(props) {
             }
         }
     };
+
+    const stepsLogBody = {
+        "aggregateBy": [{
+            "dataTypeName": "com.google.step_count.delta",
+            "dataSourceId": "derived:com.google.step_count.delta:com.google.android.gms:estimated_steps"
+        }],
+        "startTimeMillis": selectedDate.getTime(),
+        "endTimeMillis": selectedDate.getTime() + day - 1,
+        "bucketByTime": {
+            "durationMillis": hour,
+            "period": {
+                "type": "day",
+                "value": 1,
+                "timeZoneId": "America/New_York"
+            }
+        }
+    };
+    // for the graph on the right hand side of the page
     useEffect(() => {
         fetch(
             requestURL,
@@ -184,7 +203,63 @@ export default function Journal(props) {
         .catch(error => console.log(error));
     }, [selectedDate]); // eslint-disable-line react-hooks/exhaustive-deps
     
-    
+    useEffect(() => {
+        fetch(
+            requestURL,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;encoding=utf-8',
+                    'Authorization': `Bearer ${props.user.accessToken}`,
+                },
+                body: JSON.stringify(stepsLogBody)
+            }
+        )
+        .then(res => res.json())
+        .then(response => {
+            console.log(response);
+            let steplist = [];
+            response.bucket.forEach(x => {
+                if (x.dataset[0].point.length !== 0) {
+                    steplist.push(x.dataset[0].point[0].value[0].intVal);
+                } else {
+                    steplist.push(0);
+                }
+            });
+            console.log(steplist);
+        })
+        .catch(error => console.log(error));
+    }, [selectedDate]); // eslint-disable-line react-hooks/exhaustive-deps
+
+
+    // ------------SESSIONS API CALL------------
+    // it turns out sessions only track manually entered SESSIONS which (for some reason) is seperate from activities tracked in the Google Fit app.
+    // Future Implementation: add ability to insert a session in the website??
+
+    // let sessionsRequestUrl = new URL('https://www.googleapis.com');
+    // sessionsRequestUrl.protocol = 'https';
+    // sessionsRequestUrl.hostname = 'www.googleapis.com';
+    // sessionsRequestUrl.pathname = '/fitness/v1/users/me/sessions';
+    // sessionsRequestUrl.searchParams.append('startTime', `${selectedDate.toISOString()}`);
+    // sessionsRequestUrl.searchParams.append('endTime', `${new Date(selectedDate.getTime() + day - 1).toISOString()}`);
+    // console.log(sessionsRequestUrl);
+    // useEffect(() => {
+    //     fetch(
+    //         sessionsRequestUrl,
+    //         {
+    //             method: "GET",
+    //             headers: {
+    //                 'Accept': 'application/json;encoding=utf-8',
+    //                 'Authorization': `Bearer ${props.user.accessToken}`,
+    //             }
+    //         }
+    //     )
+    //     .then(res => res.json())
+    //     .then(response => {
+    //         console.log(response);
+    //     })
+    //     .catch(error => console.log(error));
+    // }, [selectedDate]); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="page">
