@@ -12,9 +12,9 @@ export function kToLbs(kg) {
  */
 export function mToFt(m) {
     let ft = m * 3.28084;
-    let inches = (ft % ft.toFixed(0)) * 12;
-    ft = ft.toFixed(0);
-    inches = Math.round(inches).toFixed(0)
+    let inches = (ft % Math.trunc(ft)) * 12;
+    ft = Math.trunc(ft);
+    inches = Math.round(inches);
     return {
         ft,
         inches

@@ -73,7 +73,6 @@ export default function Profile(props) {
         )
         .then(res => res.json())
         .then(response => {
-            console.log(response);
             response.bucket.forEach(x => {
                 if (x.dataset[0].point.length !== 0 && weight === -1) {
                     setWeight(x.dataset[0].point[0].value[0].fpVal);
@@ -152,7 +151,7 @@ export default function Profile(props) {
                             </tr>
                             <tr class="mdc-data-table__row">
                                 <th class="mdc-data-table__cell" scope="row">Height</th>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{height === -1 ? '—' : mToFt(height).ft + ' ft ' + mToFt(height).inches + ' in'}</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{height === -1 ? '—' : `${mToFt(height).ft} ft ${mToFt(height).inches} in`}</td>
                             </tr>
                         </tbody>
                     </table>
