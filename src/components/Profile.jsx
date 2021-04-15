@@ -1,25 +1,31 @@
 /* Packages */
 import React, { useEffect, useState } from 'react';
 /* Util */
-import { getMonth } from '../util/Conversions';
+import { getMonth, kToLbs, mToFt } from '../util/Conversions';
 /* Styles */
 import '../styles/Profile.scss'
 
 export default function Profile(props) {
+    const d = new Date();
+    const day = 86400000;
 
     const [ loaded, setLoaded ] = useState(false);
     const [ bDate, setBDate ] = useState('');
     const [ gender, setGender ] = useState('');
+    const [ weight, setWeight ] = useState(-1);
+    const [ height, setHeight ] = useState(-1);
 
-    /* Name, Birthday, Gender */
+    /* request urls */
     const peopleRequestUrl = new URL('https://people.googleapis.com');
     peopleRequestUrl.protocol = 'https';
     peopleRequestUrl.hostname = 'people.googleapis.com';
     peopleRequestUrl.pathname = '/v1/people/me';
     peopleRequestUrl.searchParams.append('personFields', 'birthdays,genders,names');
     peopleRequestUrl.searchParams.append('sources', 'READ_SOURCE_TYPE_PROFILE');
+    const requestURL = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
 
     useEffect(() => {
+    // get name, birthday, gender
         fetch(
             peopleRequestUrl,
             {
@@ -34,94 +40,90 @@ export default function Profile(props) {
         .then(response => {
             setBDate(`${getMonth(response.birthdays[0].date.month)} ${response.birthdays[0].date.day}, ${response.birthdays[0].date.year}`);
             setGender(`${response.genders[0].formattedValue}`);
-            setLoaded(true);
         })
         .catch(error => console.log(error));
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-    /* Height, Weight  TODO :: ????? can only get aggregate data from user manually entered values, find a way to get latest value */
-    // const [ height, setHeight ] = useState(0);
-    // const [ weight, setWeight ] = useState(0);
+    // get weight if recorded in the past 90 days
+        const weightBody = {
+            "aggregateBy": [{
+                "dataTypeName": "com.google.weight",
+                "dataSourceId": "derived:com.google.weight:com.google.android.gms:merge_weight"
+            }],
+            "startTimeMillis": d.getTime() - 90 * day,
+            "endTimeMillis": d.getTime(),
+            "bucketByTime": {
+                "durationMillis": day,
+                "period": {
+                    "type": "day",
+                    "value": 1,
+                    "timeZoneId": "America/New_York"
+                }
+            }
+        };
+        fetch(
+            requestURL,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;encoding=utf-8',
+                    'Authorization': `Bearer ${props.user.accessToken}`,
+                },
+                body: JSON.stringify(weightBody)
+            }
+        )
+        .then(res => res.json())
+        .then(response => {
+            console.log(response);
+            response.bucket.forEach(x => {
+                if (x.dataset[0].point.length !== 0 && weight === -1) {
+                    setWeight(x.dataset[0].point[0].value[0].fpVal);
+                }
+            });
+        })
+        .catch(error => console.log(error));
 
-    // const d = new Date();
-    // const presentationOfGoogleFit = 86400000 * 16246;
-    // const end = d.getTime();
-    // console.log(end);
+    // get height if recorded in the past 90 days
+        const heightBody = {
+            "aggregateBy": [{
+                "dataTypeName": "com.google.height",
+                "dataSourceId": "derived:com.google.height:com.google.android.gms:merge_height"
+            }],
+            "startTimeMillis": d.getTime() - 90 * day,
+            "endTimeMillis": d.getTime(),
+            "bucketByTime": {
+                "durationMillis": day,
+                "period": {
+                    "type": "day",
+                    "value": 1,
+                    "timeZoneId": "America/New_York"
+                }
+            }
+        };
+        fetch(
+            requestURL,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;encoding=utf-8',
+                    'Authorization': `Bearer ${props.user.accessToken}`,
+                },
+                body: JSON.stringify(heightBody)
+            }
+        )
+        .then(res => res.json())
+        .then(response => {
+            response.bucket.forEach(x => {
+                if (x.dataset[0].point.length !== 0 && height === -1) {
+                    setHeight(x.dataset[0].point[0].value[0].fpVal);
+                }
+            });
 
-    // const requestURL = `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`;
-    // const weightBody = {
-    //     "aggregateBy": [{
-    //         "dataTypeName": "com.google.weight",
-    //         "dataSourceId": "derived:com.google.weight:com.google.android.gms:merge_weight"
-    //     }],
-    //     "startTimeMillis": end - 86400000,
-    //     "endTimeMillis": end,
-    //     "bucketByTime": {
-    //         "durationMillis": 86400000,
-    //         "period": {
-    //             "type": "day",
-    //             "value": 1,
-    //             "timeZoneId": "America/New_York"
-    //         }
-    //     }
-    // };
-    // const heightBody = {
-    //     "aggregateBy": [{
-    //         "dataTypeName": "com.google.height",
-    //         "dataSourceId": "derived:com.google.height:com.google.android.gms:merge_height"
-    //     }],
-    //     "startTimeMillis": end - 86400000,
-    //     "endTimeMillis": end,
-    //     "bucketByTime": {
-    //         "durationMillis": 86400000,
-    //         "period": {
-    //             "type": "day",
-    //             "value": 1,
-    //             "timeZoneId": "America/New_York"
-    //         }
-    //     }
-    // };
-    // // get weight
-    // useEffect(() => {
-    //     fetch(
-    //         requestURL,
-    //         {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json;encoding=utf-8',
-    //                 'Authorization': `Bearer ${props.user.accessToken}`,
-    //             },
-    //             body: JSON.stringify(weightBody)
-    //         }
-    //     )
-    //     .then(res => res.json())
-    //     .then(response => {
-    //         console.log(response);
-    //         setWeight(response.bucket[0].dataset[0].point[0].value[0].fpVal);
-    //     })
-    //     .catch(error => console.log(error));
-    // }, [props.user.authenticated])  
-    // // get height
-    // useEffect(() => {
-    //     fetch(
-    //         requestURL,
-    //         {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json;encoding=utf-8',
-    //                 'Authorization': `Bearer ${props.user.accessToken}`,
-    //             },
-    //             body: JSON.stringify(heightBody)
-    //         }
-    //     )
-    //     .then(res => res.json())
-    //     .then(response => {
-    //         console.log(response);
-    //         setHeight(response.bucket[0].dataset[0].point[0].value[0].fpVal);
-    //         setLoaded(true);
-    //     })
-    //     .catch(error => console.log(error));
-    // }, [props.user.authenticated])  
+        })
+        .catch(error => console.log(error));
+
+        setLoaded(true);
+
+    }, [props.user.authenticated])  // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="profile">
@@ -144,17 +146,20 @@ export default function Profile(props) {
                                 <th class="mdc-data-table__cell" scope="row">Gender</th>
                                 <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{loaded ? gender : '—'}</td>
                             </tr>
-                            {/* <tr class="mdc-data-table__row">
+                            <tr class="mdc-data-table__row">
                                 <th class="mdc-data-table__cell" scope="row">Weight</th>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{Math.round(kToLbs(weight))} lbs</td>
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{weight === -1 ? '—' : Math.round(kToLbs(weight)) + ' lbs'}</td>
                             </tr>
                             <tr class="mdc-data-table__row">
                                 <th class="mdc-data-table__cell" scope="row">Height</th>
-                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{mToFt(height).ft} ft {mToFt(height).inches} in</td>
-                            </tr> */}
+                                <td class="mdc-data-table__cell mdc-data-table__cell--numeric">{height === -1 ? '—' : mToFt(height).ft + ' ft ' + mToFt(height).inches + ' in'}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div className="footnote">
+                *Shows most recent height and weight data inputted within the last 90 days
             </div>
         </div>
     );
