@@ -1,7 +1,7 @@
 {
   "homepage": "http://jtlamb.github.io/google-fit-web",
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "google-fit-web",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@material/button": "^10.0.0",
