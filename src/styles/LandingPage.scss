@@ -1,0 +1,33 @@
+@import "/src/styles/App.scss";
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: $blue;
+    height: 100vh;
+}
+
+.header-landing {
+    background-color: $white;
+}
+
+.content-landing {
+    height: 100%;
+    max-width: 45%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .content-header-landing {
+        font-family: 'Roboto', sans-serif;
+        color: $white;
+        font-size: 4em;
+        padding-bottom: 2em;
+    }
+    .content-text-landing {
+        font-family: 'Roboto', sans-serif;
+        color: $white;
+        font-size: 2.5em;
+    }
+}

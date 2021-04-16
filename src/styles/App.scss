@@ -4,6 +4,8 @@ $yellow: #FBBC05;
 $green: #34A853;
 $lightgreen: #06bf9a;
 $lightgrey: #d3d3d3;
+$darkgrey: #666666;
+$white: #ffffff;
 $black: #000000;
 
 
@@ -18,6 +20,8 @@ $black: #000000;
 
 .sideNav {
   margin-left: 0;
+  bottom: 0;
+  height: 100vh;
 }
 .content {
   height: 100vh;

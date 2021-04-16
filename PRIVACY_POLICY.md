@@ -1,8 +1,8 @@
 # Google Fit Web Privacy Policy
 
-Google Fit Web will not store or share any user information. The site only reads information from users' Google accounts after sign in. The data displayed is simply read from the Google Fit REST API and the Google People API. No cookies, local storage, or database is used to store personal information nor information retrived from the users' Google accounts. 
+Google Fit Web will not store or share any user information. The site only reads and writes information from users' Google accounts after sign in. The data displayed is simply read from the Google Fit REST API and the Google People API. No cookies, local storage, or database is used to store personal information nor information retrieved from the users' Google accounts. 
 
->**Note: This project is not a product from Google themselves. This is an independent student project for CS 4365 at the Georgia Institute of Technology.**
+>**Note: This project is not a product from Google themselves nor do I have any affiliation with Google. This is an independent student project for CS 4365 at the Georgia Institute of Technology.**
 
 ## Scopes Requested by Google Fit Web
 

@@ -6,7 +6,7 @@ import SignInOut from './SignInOut';
 /* Styles */
 import '../styles/SideNav.scss';
 /* Utils */
-import FitLogo from '../imgs/GoogleFit_Logo_Vertical.png'
+import FitLogo from '../imgs/GoogleFit_Logo_Horizontal.png'
 
 /** Sidebar Navigation
  *  conatins all of the navigation for the site

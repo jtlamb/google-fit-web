@@ -1,0 +1,23 @@
+@import "/src/styles/App.scss";
+
+
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header-about {
+    font-size: 3.5em;
+    padding-top: 1em;
+    padding-bottom: 1.25em;
+    font-family: 'Roboto', sans-serif;;
+}
+
+.content-about {
+    font-size: 1.5em;
+    font-family: 'Roboto', sans-serif;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
