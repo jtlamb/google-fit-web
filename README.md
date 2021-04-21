@@ -119,8 +119,6 @@ Due to the REST API limitations, some data points shown in the Google Fit mobile
 
 2. The activites shown in the Google Fit mobile app `Journal` page are automatically recorded events and cannot be obtained through the REST API. Instead, the REST API only has access to a data type entitled `sessions`. These `sessions` have to be manually inputed by a user via a third party application, not directly in the Google Fit app.
     - My goal for this was to add a `Activities` table in the `Journal` page where the `Log` is. Much like in the home page where the `chips` are used to select between the Heart Points and Steps pie charts, the user can select to see their hourly data or their sessions. The `Activites` tab would display those sessions in the rows similar to the Google Fit mobile app. Additionally, there would be an option at the top of the table to add a `session`. A modal would pop up and allow the user to manually enter their information.  
-    
-3. (Maybe) Height and weight were not able to be obtained correctly through the REST API because it is reliant on a user entering their height and weight recently in the Google Fit app. If they have not entered it recently, it becomes extraneous tracking dowwn that information.
 
 ### Overall improve the look and flow of the application
 Right now, the application is very snappy and there are not many transitions. For example, when a user is loading into the home page, I would like to show dynamic graphs that smoothly populate with data rather than an instant flash of information.
@@ -128,6 +126,8 @@ Right now, the application is very snappy and there are not many transitions. Fo
 ### Make it public
 I am working on getting the project public so that if you have a Google account, you can use the application, but due to the use of sensitive scopes, there are some extra steps in order to get it public. 
 - [x] An official link to your app's Privacy Policy
-- [ ] A YouTube video showing how you plan to use the Google user data you get from scopes
-- [ ] A written explanation telling Google why you need access to sensitive and/or restricted user data
+- [x] A YouTube video showing how you plan to use the Google user data you get from scopes
+- [x] A written explanation telling Google why you need access to sensitive and/or restricted user data
 - [x] All your domains verified in Google Search Console
+
+All of the steps were completed, I am now waiting on verification from Google's team to make it public and available to users. The process may take up to 4-6 weeks.
