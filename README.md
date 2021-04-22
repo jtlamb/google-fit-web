@@ -130,4 +130,5 @@ I am working on getting the project public so that if you have a Google account,
 - [x] A written explanation telling Google why you need access to sensitive and/or restricted user data
 - [x] All your domains verified in Google Search Console
 
-All of the steps were completed, I am now waiting on verification from Google's team to make it public and available to users. The process may take up to 4-6 weeks.
+~~All of the steps were completed, I am now waiting on verification from Google's team to make it public and available to users. The process may take up to 4-6 weeks.~~
+The application is going to remain as 'Testing' as the publishing status and will only be available for personal use. If you would like to become one of the test users, reach out to the email within the Privacy Policy document.
